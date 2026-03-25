@@ -2,42 +2,31 @@ import { useEffect, useRef } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 
 /**
- * Custom hook to initialize Locomotive Scroll v5 (Lenis-based).
- * Optimized for React 18+ and enterprise-level performance.
+ * useLocomotive Hook
+ * @description Initializes Locomotive Scroll v5 with optimized Lenis options.
+ * @returns {React.MutableRefObject} scrollRef - The scroll instance reference.
  */
-export const useLocomotive = (options = {}) => {
+export const useLocomotive = () => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    // Initialize Locomotive Scroll
+    // Initialize Locomotive Scroll v5 (Lenis-based core)
     scrollRef.current = new LocomotiveScroll({
       autoStart: true,
       lenisOptions: {
-        wrapper: window,
-        content: document.documentElement,
-        lerp: 0.1,
-        duration: 1.2,
+        lerp: 0.1, // Linear Interpolation (Smoothness)
+        duration: 1.2, // Scroll duration in seconds
         smoothWheel: true,
-        ...options,
       },
     });
 
-    // The ResizeObserver Strategy: Required for dynamic React components
-    // that change height after API data arrives.
-    const resizeObserver = new ResizeObserver(() => {
-      scrollRef.current?.update();
-    });
-
-    resizeObserver.observe(document.body);
-
-    // Cleanup to prevent memory leaks and duplicate instances
+    // Cleanup on unmount to prevent memory leaks
     return () => {
       if (scrollRef.current) {
         scrollRef.current.destroy();
       }
-      resizeObserver.disconnect();
     };
-  }, [options]);
+  }, []);
 
   return scrollRef;
 };
