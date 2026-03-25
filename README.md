@@ -38,7 +38,10 @@ replacing it with a fluid, continuous path that feels premium on high-refresh-ra
 Initialize the scroll instance within your React lifecycle to ensure clean memory management.
 
 **JavaScript**
-**src/hooks/useLocomotive.js** 
+
+```
+**src/hooks/useLocomotive.js**
+
 import { useEffect, useRef } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
 
@@ -47,6 +50,7 @@ import LocomotiveScroll from 'locomotive-scroll';
  * @description Initializes Locomotive Scroll v5 with optimized Lenis options.
  * @returns {React.MutableRefObject} scrollRef - The scroll instance reference.
  */
+
 export const useLocomotive = () => {
   const scrollRef = useRef(null);
 
@@ -71,6 +75,8 @@ export const useLocomotive = () => {
 
   return scrollRef;
 };
+
+```
 
 ## 📈 Real-World Results
 
@@ -97,5 +103,5 @@ A "save-worthy" reference guide including:
   **Author:** Syed Ahmed Mohi Uddin Hasan
   **Location:** Al Khobar, KSA
 
-* **LinkedIn:** [Syed Ahmed Mohi Uddin Hasan](<[text](https://www.linkedin.com/in/syedahmedhasanx3/)>)
-* **DEV Community:** [My Technical Articles](<[text](https://dev.to/syedahmedx3)>)
+* **LinkedIn:** [Syed Ahmed Mohi Uddin Hasan](https://www.linkedin.com/in/syedahmedhasanx3/)
+* **DEV Community:** [My Technical Articles](https://dev.to/syedahmedx3)
